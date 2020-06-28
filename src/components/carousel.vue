@@ -131,7 +131,7 @@ export default {};
     margin: 0 auto;
     .block-tit {
       position: absolute;
-      top: 235px;
+      top: 115px;
       left: 50%;
       transform: translateX(-50%);
       height: 198px;

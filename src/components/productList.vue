@@ -196,8 +196,11 @@ export default {};
 
 @media screen and (min-width: 1200px) {
   .container {
+    height: 773px;
     .center {
       .c-title {
+        padding-top: 71px !important;
+        margin-bottom: 62px;
         .select-tit {
           span {
             margin-left: 47px ;
@@ -206,16 +209,19 @@ export default {};
           }
         }
       }
+      .c-main{
+        height: 410px;
+        .pro-item{
+          height: 388px;
+          width: 420px;
+          img{
+          width: 332px;
+          height: 221px;
+            margin-top: 40px;
+          }
+        }
+      }
     }
-  }
-}
-@media screen and (max-width: 1400px) {
-  .container {
-    .center {
-    }
-  }
-
-  .c-title {
   }
 }
 </style>
