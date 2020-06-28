@@ -1,0 +1,94 @@
+@font-face{
+    font-family: Source Han Sans CN Light;
+    src: url("./siyuanheiti_ttrar/SourceHanSans-Light.otf");
+}
+@font-face{
+    font-family: Source Han Sans CN Light Light;
+    src: url("./siyuanheiti_ttrar/SourceHanSans-ExtraLight.otf");
+}
+@font-face{
+    font-family: Source Han Sans CN Heavy;
+    src: url("./siyuanheiti_ttrar/SourceHanSans-Heavy.otf");
+}
+@font-face{
+    font-family: Source Han Sans CN Bold-Bold;
+    src: url("./siyuanheiti_ttrar/SourceHanSans-Bold.otf");
+}
+@font-face{
+    font-family: Source Han Sans CN Medium;
+    src: url("./siyuanheiti_ttrar/SourceHanSans-Medium.otf");
+}
+@font-face{
+    font-family: Source Han Sans CN;
+    src: url("./siyuanheiti_ttrar/SourceHanSans-Normal.otf");
+}
+@font-face{
+    font-family: Source Han Sans CN Regular;
+    src: url("./siyuanheiti_ttrar/SourceHanSans-Regular.otf");
+}
+
+
+body{
+    /* width: 100vw; */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* font-family: Source Han Sans CN Light, Source Han Sans CN Light-Light; */
+    color: #333333;
+    font-weight: 300;
+    background-color: #fff;
+    scrollbar-width: none;
+    /* -ms-overflow-style: none !important; */
+}
+
+/* @media screen and (min-width:1200px){
+    :root{
+        font-size: 24px;
+
+    }
+}
+@media screen and (min-width:992px){
+    :root{
+        font-size: 20px;
+
+    }
+}
+@media screen and (min-width:768px){
+    :root{
+        font-size: 18px;
+
+    }
+}
+@media screen and (max-width:768px){
+    :root{
+        font-size: 16px;
+
+    }
+} */
+
+/* @media screen and (min-width:1200px){
+    body{
+        font-size: 14px !important;
+
+    }
+}
+@media screen and (min-width:992px){
+    body{
+        font-size: 12px !important;
+    }
+}
+@media screen and (min-width:768px){
+    body{
+        font-size: 10px !important;
+    }
+}
+@media screen and (min-width:576px){
+    body{
+        font-size: 8px !important;
+    }
+}
+@media screen and (max-width:768px){
+    body{
+        font-size: 6px !important;
+    }
+} */

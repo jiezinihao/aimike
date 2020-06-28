@@ -25,5 +25,10 @@ npm run test
 npm run lint
 ```
 
+
+### 响应式的基本规则
+# 因为采用min-width来做响应式
+所有媒体查询的大屏幕尺寸要放在小尺寸之后，以递增排序
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
