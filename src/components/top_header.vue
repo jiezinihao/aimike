@@ -17,20 +17,155 @@
         <a href="">服务支持</a>
         <a href="">新闻动态</a>
         <a href="">关于我们</a>
-        <a href="">合作伙伴</a>
         <a href="">联系我们</a>
       </div>
     </div>
     <div class="m-container">
       <div class="left">
-        <img class="top-icon" src="" alt="" />
+        <img class="top-icon" src="../assets/m_top_img01.png" alt="" />
       </div>
       <div class="right">
-        <span class="manu"></span>
+        <img src="../assets/manu.png" alt="" @click="openManu(1)" />
+      </div>
+    </div>
+    <div class="open-manu" ref="manu">
+      <div class="manu-nav">
+        <img src="../assets/m_top_img01.png" />
+        <div class="iconfont iconcha" @click="openManu(0)"></div>
+      </div>
+      <div class="manu-search">
+        <input type="text" placeholder="请输入您想检索的内容" />
+        <div class="search-btn">搜索</div>
+      </div>
+      <div class="manu-list" ref="manuList">
+        <div class="list-item">
+          <div
+            :class="['list-tit', currenDetail == 0 ? 'tit-active' : '']"
+            @click="openDetail(0)"
+          >
+            产品中心
+          </div>
+          <div class="list-body">
+            <div class="list-main">电线电缆</div>
+            <div class="list-main">智能数据传输电缆</div>
+            <div class="list-main">电子电器产品</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div
+            :class="['list-tit', currenDetail == 1 ? 'tit-active' : '']"
+            @click="openDetail(1)"
+          >
+            电缆联盟
+          </div>
+          <div class="list-body">
+            <div class="list-main">电线电缆</div>
+            <div class="list-main">智能数据传输电缆</div>
+            <div class="list-main">电子电器产品</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div
+            :class="['list-tit', currenDetail == 2 ? 'tit-active' : '']"
+            @click="openDetail(2)"
+          >
+            服务支持
+          </div>
+          <div class="list-body">
+            <div class="list-main">电线电缆</div>
+            <div class="list-main">智能数据传输电缆</div>
+            <div class="list-main">电子电器产品</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div
+            :class="['list-tit', currenDetail == 3 ? 'tit-active' : '']"
+            @click="openDetail(3)"
+          >
+            新闻动态
+          </div>
+          <div class="list-body">
+            <div class="list-main">电线电缆</div>
+            <div class="list-main">智能数据传输电缆</div>
+            <div class="list-main">电子电器产品</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div
+            :class="['list-tit', currenDetail == 4 ? 'tit-active' : '']"
+            @click="openDetail(4)"
+          >
+            关于我们
+          </div>
+          <div class="list-body">
+            <div class="list-main">电线电缆</div>
+            <div class="list-main">智能数据传输电缆</div>
+            <div class="list-main">电子电器产品</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div
+            :class="['list-tit', currenDetail == 5 ? 'tit-active' : '']"
+            @click="openDetail(5)"
+          >
+            联系我们
+          </div>
+          <div class="list-body">
+            <div class="list-main">电线电缆</div>
+            <div class="list-main">智能数据传输电缆</div>
+            <div class="list-main">电子电器产品</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      currenDetail: -1,
+    };
+  },
+  mounted() {},
+  methods: {
+    openDetail(res) {
+      let deta = this.$refs.manuList.children[res].children[1].style.height;
+      if (deta == 0 || deta == "0px") {
+        if (this.currenDetail != -1) {
+          this.$refs.manuList.children[
+            this.currenDetail
+          ].children[1].style.height = 0;
+        }
+        if (document.body.clientWidth > 1200) {
+          this.$refs.manuList.children[res].children[1].style.height = "270px";
+        } else {
+          this.$refs.manuList.children[res].children[1].style.height = "135px";
+        }
+        this.currenDetail = res;
+      } else {
+        this.$refs.manuList.children[res].children[1].style.height = 0;
+        this.currenDetail = -1;
+      }
+      console.log(this.currenDetail);
+    },
+    openManu(res) {
+      if (res) {
+        document.body.style.position = "fixed";
+        document.body.style.overflowY = "hidden";
+        this.$refs.manu.style.opacity = "1";
+
+        this.$refs.manu.style.width = "100%";
+      } else {
+        document.body.style.position = "relative";
+        document.body.style.overflowY = "auto";
+        this.$refs.manu.style.width = "0";
+        this.$refs.manu.style.opacity = "0";
+      }
+    },
+  },
+};
+</script>
 <style lang="scss" scoped>
 .container {
   width: 100%;
@@ -39,88 +174,258 @@
 }
 //移动端样式
 
-@media screen and (max-width: 567px) {
+@media screen and (min-width: 50px) {
+  .open-manu {
+    display: block;
+    opacity: 0;
+    width: 0;
+    box-sizing: border-box;
+    height: 101vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 0.1s;
+    background: #fff;
+    overflow-y: scroll !important;
+    overflow-x:hidden !important ;
+    z-index: 11;
+    .manu-nav {
+      width: 100%;
+      height: 50px;
+      padding: 0 10px;
+      background: #0284f2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      img {
+        height: 28px;
+      }
+      .iconcha {
+        margin-right: 30px;
+        font-size: 20px;
+        color: white;
+      }
+    }
+    .manu-search {
+      height: 80px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 0.5px solid #cccccc;
+      input {
+        box-sizing: border-box;
+        width: 220px;
+        height: 35px;
+        border: 1px solid #999999;
+        color: #cccccc;
+        width: 228px;
+        padding: 12px;
+        font-size: 12px;
+        font-family: Source Han Sans CN Light, Source Han Sans CN Light-Light;
+        font-weight: 300;
+        text-align: left;
+        color: #cccccc;
+        letter-spacing: 1px;
+      }
+      .search-btn {
+        width: 60px;
+        height: 35px;
+        background-color: #0284f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+    }
+    .manu-list {
+      width: 100%;
+      text-align: center;
+      .list-item {
+        width: 100%;
+        .tit-active {
+          color: #0284f2;
+        }
+        .list-tit {
+          height: 52px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 18px;
+          font-family: Source Han Sans CN Regular,
+            Source Han Sans CN Regular-Regular;
+          font-weight: 400;
+          text-align: left;
+          letter-spacing: 1px;
+        }
+        .list-body {
+          height: 0;
+          width: 100%;
+          overflow: hidden;
+          transition: height 0.2s ease;
+          .list-main {
+            width: 100%;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-family: Source Han Sans CN Light,
+              Source Han Sans CN Light-Light;
+            font-weight: 300;
+            text-align: left;
+            color: #666666;
+            letter-spacing: 1px;
+            background: #f4f4f4;
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    position: relative;
+    height: 50px;
+  }
   .pc-center {
     display: none;
   }
   .m-container {
     width: 100%;
-    height: 100px;
+    height: 50px;
     background: #0284f2;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .left {
-      margin-left: 5px;
-      height: 48px;
-      width: 118px;
-      background-color: #fff;
+      margin-left: 10px;
+
       img {
+        height: 28px;
       }
     }
     .right {
-      margin-right: 5px;
-      width: 54px;
-      height: 38px;
-      background-color: #fff;
-      .manu {
+      margin-right: 10px;
+      width: 28px;
+      height: 26px;
+      cursor: pointer;
+      img {
+        width: 28px;
+        height: 26px;
       }
     }
   }
 }
 @media screen and (min-width: 567px) {
+  .open-manu {
+    .manu-nav {
+      height: 100px;
+      padding: 0 10px;
+      img {
+        height: 48px;
+      }
+      .iconcha {
+        cursor: pointer;
+
+        font-size: 34px;
+      }
+    }
+    .manu-search {
+      height: 160px;
+      input {
+        width: 480px;
+        height: 62px;
+        font-size: 24px;
+        padding: 24px;
+      }
+      .search-btn {
+        min-width: 130px;
+        cursor: pointer;
+
+        height: 62px;
+        font-size: 36px;
+        font-family: Source Han Sans CN Regular,
+          Source Han Sans CN Regular-Regular;
+        font-weight: 400;
+        text-align: left;
+        color: #ffffff;
+        letter-spacing: 1px;
+      }
+    }
+    .manu-list {
+      cursor: pointer;
+
+      .list-item {
+        .list-tit {
+          height: 104px;
+          font-size: 36px;
+        }
+        .list-body {
+          .list-main {
+            height: 90px;
+            font-size: 28px;
+          }
+        }
+      }
+    }
+  }
+  .container {
+    height: 80px;
+  }
   .pc-center {
     display: none;
   }
   .m-container {
     width: 100%;
-    height: 100px;
+    height: 80px;
     background: #0284f2;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .left {
       margin-left: 30px;
-      height: 48px;
-      width: 118px;
-      background-color: #fff;
+
       img {
+        height: 38px;
+        width: 88px;
       }
     }
     .right {
       margin-right: 36px;
       width: 54px;
       height: 38px;
-      background-color: #fff;
 
-      .manu {
+      img {
+        width: 54px;
+        height: 38px;
       }
     }
   }
 }
 @media screen and (min-width: 768px) {
-  
-}
+  .open-manu{
+    display: none;
 
-//pc端样式
-
-@media screen and (min-width: 1200px) {
+  }
   .m-container {
     display: none;
   }
   .pc-center {
-    width: 1399px;
+    max-width: 1399px;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    .left {
-      width: 508px;
+      overflow: hidden;
 
-      @media screen and (max-width: 1400px) {
+    .left {
+      @media screen and (max-width: 1300px) {
         width: 250px;
-        padding: 0 60px;
+        padding-left: 60px;
+
         .top-icon:last-child {
           display: none;
         }
@@ -131,9 +436,10 @@
     }
     .right {
       font-family: Source Han Sans CN Light;
-      min-width: 900px;
+      min-width: 800px;
+      text-align: left;
       .top-active {
-        color: #05abf6;
+        color: #05acf7;
         position: relative;
         &::after {
           content: "";
@@ -143,7 +449,7 @@
           transform: translateX(-50%);
           width: 28px;
           height: 2px;
-          background: #05abf6;
+          background: #05acf7;
         }
       }
       a {
@@ -153,17 +459,34 @@
         color: #333333;
         font-size: 16px;
         height: 15px;
-        margin-left: 40px;
+        margin-left: 30px;
         &:nth-child(2) {
           margin-left: 58px;
+        }
+        &:nth-child(1) {
+          margin-left: 0;
         }
       }
     }
   }
 }
-@media screen and (max-width: 1400px) {
+
+//pc端样式
+
+@media screen and (min-width: 992px) {
+  .pc-center {
+    .right {
+      text-align: center;
+      a {
+        margin-left: 40px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
   .pc-center {
     width: 100%;
+    justify-content: space-between;
   }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div class="container" >
     <div class="pc-top-block">
       <img src="../assets/thumb_title.png" class="block-tit" />
-      <el-carousel trigger="click" interval="7000">
+      <el-carousel  :interval="lalala" trigger="click" >
         <el-carousel-item
           ><img class="thumb" src="../assets/thumb_icon01.png" alt="" />
         </el-carousel-item>
@@ -14,9 +14,9 @@
         </el-carousel-item>
       </el-carousel>
     </div>
-    <div class="m-top-block">
+    <div class="m-top-block" >
     <img src="../assets/thumb_title.png" class="block-tit" />
-      <el-carousel trigger="click">
+      <el-carousel :interval="lalala" trigger="click" ref="coures">
         <el-carousel-item
           ><img class="thumb" src="../assets/thumb_icon01.png" alt="" />
         </el-carousel-item>
@@ -31,7 +31,40 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      lalala:3000,
+      startX:0,
+      endX:0
+    }
+  },
+  mounted(){
+    document.addEventListener('touchstart',this.touch,false)
+    document.addEventListener('touchend',this.touch,false)
+
+  },
+  destroyed(){
+    document.removeEventListener('touchstart')
+    document.removeEventListener('touchend')
+
+  },
+  methods:{
+      touch(event){
+        if(event.target.className == "thumb"){
+          if(event.type == "touchstart"){
+            this.startX = event.changedTouches[0].pageX
+          }else if(event.type == "touchend"){
+              if(this.startX - event.changedTouches[0].pageX>50){
+                this.$refs.coures.next()
+              }else if(this.startX - event.changedTouches[0].pageX<-50){
+                this.$refs.coures.prev()
+              }
+          }
+        }
+      }
+  }
+};
 </script>
 <style lang="scss" scoped>
 //移动端样式
@@ -41,32 +74,21 @@ export default {};
   }
   .m-top-block {
     display: block;
-    height: 240px;
     width: 100%;
     .block-tit {
       position: absolute;
-      top: 150px;
+      top: 70px;
       left: 50%;
       transform: translateX(-50%);
       height: 70px;
+      z-index: 5;
       // width: 170px;
       text-align: center;
-      .pang {
-        width: 557px;
-        height: 97px;
-        font-size: 12px;
-        font-family: PangMenZhengDao Regular, PangMenZhengDao Regular-Regular;
-        font-weight: 400;
-        text-align: center;
-        color: #b02f2f;
-        // line-height: 62px;
-        letter-spacing: 2px;
-      }
       // background: url("../assets/thumb_title.png") no-repeat center center;
     }
     .thumb {
-      height: 260px;
-      //   width: 1920px;
+      height: 240px;
+        min-width: 100%;
     }
   }
 }
@@ -85,6 +107,7 @@ export default {};
       transform: translateX(-50%);
       height: 100px;
       text-align: center;
+      z-index: 5;
       // background: url("../assets/thumb_title.png") no-repeat center center;
     }
     .thumb {
@@ -136,7 +159,7 @@ export default {};
       transform: translateX(-50%);
       height: 198px;
       width: 698px;
-      // background: url("../assets/thumb_title.png") no-repeat center center;
+      z-index: 5;
     }
     .thumb {
       height: 650px;
@@ -160,11 +183,11 @@ export default {};
 </style>
 <style lang="scss">
 .el-carousel {
-  z-index: -1;
+  z-index: 1;
 }
 .el-carousel__container {
   @media screen and (max-width: 567px) {
-    height: 240px !important;
+    height: 210px !important;
   }
   @media screen and (min-width: 567px) {
     height: 400px !important;
