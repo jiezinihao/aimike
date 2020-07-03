@@ -72,7 +72,7 @@ export default {
 .home {
   text-align: center;
   width: 100%;
-    overflow: hidden;
+  overflow: hidden;
   scrollbar-width: none !important;
   // border: none;
   -ms-overflow-style: none !important;
@@ -87,6 +87,7 @@ export default {
       display: none;
     }
     .m-about {
+      transition: 0.2s;
       width: 90%;
       height: 553px;
       padding-bottom: 30px;
@@ -106,7 +107,11 @@ export default {
           width: 100%;
           height: 40px;
           display: flex;
-
+          font-size: 10px;
+          font-family: Source Han Sans CN Regular,
+            Source Han Sans CN Regular-Regular;
+          font-weight: 400;
+          color: #ffffff;
           .btn-left {
             width: 50%;
             display: flex;
@@ -210,6 +215,7 @@ export default {
           font-size: 13px;
           font-weight: 300;
           line-height: 26px;
+          cursor: pointer;
           .icon {
             display: inline-block;
             width: 19px;
@@ -238,14 +244,15 @@ export default {
         margin-bottom: 40px;
         background: url("../assets/about_img01.png") no-repeat center center;
         position: relative;
-                .img-btn {
+        .img-btn {
           position: absolute;
           bottom: 0;
           left: 0;
           width: 100%;
           height: 60px;
           display: flex;
-
+          font-size: 15px;
+          color: #ffffff;
           .btn-left {
             width: 50%;
             display: flex;
@@ -349,6 +356,7 @@ export default {
           font-size: 16px;
           font-weight: 300;
           line-height: 36px;
+          cursor: pointer;
           .icon {
             display: inline-block;
             width: 38px;
@@ -367,6 +375,7 @@ export default {
       display: none;
     }
     .about {
+      transition: 0.2s;
       overflow: hidden;
       margin: 0 auto;
       width: 687px;
@@ -422,7 +431,7 @@ export default {
           width: 100%;
           height: 40px;
           display: flex;
-
+          font-size: 20px;
           .btn-left {
             width: 50%;
             display: flex;
@@ -529,6 +538,7 @@ export default {
           font-size: 7px;
           font-weight: 300;
           line-height: 26px;
+          cursor: pointer;
           .icon {
             display: inline-block;
             width: 28px;
@@ -612,6 +622,7 @@ export default {
         }
         .in-detail {
           font-size: 16px;
+          cursor: pointer;
           .icon {
             width: 38px;
             height: 3px;
@@ -624,14 +635,15 @@ export default {
   }
   @media screen and (min-width: 1300px) {
     .about {
-      min-width: 1300px;
+      min-width: 1399px;
       height: 578px;
       margin: 80px auto;
 
       .left {
-        width: 568px !important;
+        width: 654px;
         .iconABOUT {
-          font-size: 350px;
+          right: 10px;
+          font-size: 390px;
         }
         .iconjuxing48kaobei {
           top: 40px;
@@ -642,7 +654,7 @@ export default {
           width: 347px;
           right: -347px;
         }
-                .img-btn {
+        .img-btn {
           height: 60px;
 
           .btn-left {

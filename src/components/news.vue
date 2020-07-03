@@ -6,12 +6,16 @@
           INFORMATION
         </div>
         <div class="select-tit">
-          <span class="product-active">公司新闻</span>
-          <span>行业资讯</span>
+          <span :class="{ 'product-active': newType == 1 }" @click="newType = 1"
+            >公司新闻</span
+          >
+          <span :class="{ 'product-active': newType == 2 }" @click="newType = 2"
+            >行业资讯</span
+          >
         </div>
       </div>
       <div class="news">
-        <div class="news-item news-active">
+        <div class="news-item">
           <img src="../assets/news_img01.png" alt="" />
           <div class="news-tit">以色列国防部来我公司进行技术交流</div>
           <div class="news-induce">
@@ -41,28 +45,28 @@
 </template>
 <script>
 export default {
-  data(){
-    return{
-      screenw:document.documentElement.clientWidth
-    }
+  data() {
+    return {
+      newType: 1,
+      screenw: document.documentElement.clientWidth,
+    };
   },
-  watch:{
-    screenw:function(){
-      if(this.screenw > 1550){
-        this.$refs.lastItem.style.display = "block"
-      }else{
-        this.$refs.lastItem.style.display = "none"
-
+  watch: {
+    screenw: function() {
+      if (this.screenw <1550 && this.screenw > 728) {
+        this.$refs.lastItem.style.display = "none";
+      } else{
+        this.$refs.lastItem.style.display = "block";
       }
-    }
+    },
   },
-  mounted(){
-    window.onresize = () =>{
-      return (()=>{
-        this.screenw = document.documentElement.clientWidth
-      })()
-    }
-  }
+  mounted() {
+    window.onresize = () => {
+      return (() => {
+        this.screenw = document.documentElement.clientWidth;
+      })();
+    };
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -90,7 +94,7 @@ export default {
       .main-title {
         // height: 55px;
         font-size: 30px;
-        @media screen and (max-width:375px){
+        @media screen and (max-width: 375px) {
           font-size: 25px;
         }
         font-family: Source Han Sans CN Bold, Source Han Sans CN Bold-Bold;
@@ -120,10 +124,11 @@ export default {
         // padding-right: 20px;
         overflow: hidden;
         text-align: right;
+        cursor: pointer;
+
         .product-active {
           color: #0284f2;
           border-bottom: 2px solid #0284f2;
-          margin-right: 10px
         }
         span {
           font-size: 14px;
@@ -132,6 +137,13 @@ export default {
           text-align: center;
           color: #666666;
           padding: 11px 0;
+          transition: 0.2s;
+          &:hover {
+            color: #0284f2 !important;
+          }
+          &:first-child {
+            margin-right: 10px;
+          }
         }
       }
     }
@@ -139,17 +151,28 @@ export default {
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      
+
       overflow: hidden;
       margin-bottom: 24px;
       scrollbar-width: none !important;
-      &::-webkit-scrollbar{
+      &::-webkit-scrollbar {
         display: none;
       }
       .news-item {
         width: 100%;
         margin: 20px 0;
-
+        transition:.2s;
+        &:hover {
+          .news-tit {
+            color: #0285f2 !important;
+          }
+          .new-time {
+            border-top: 2px solid #0285f2 !important;
+            &::after {
+              display: block !important;
+            }
+          }
+        }
         img {
           height: auto;
           width: 100%;
@@ -210,17 +233,7 @@ export default {
         }
       }
     }
-    .news-active {
-      .news-tit {
-        color: #0285f2 !important;
-      }
-      .new-time {
-        border-top: 2px solid #0285f2 !important;
-        &::after {
-          display: block !important;
-        }
-      }
-    }
+
   }
 }
 @media screen and (min-width: 576px) {
@@ -243,7 +256,6 @@ export default {
         .product-active {
           color: #0284f2;
           border-bottom: 3px solid #0284f2;
-          margin-right: 20px;
         }
         span {
           height: 20px;
@@ -251,6 +263,9 @@ export default {
           font-weight: 400;
           text-align: right;
           line-height: 54px;
+          &:first-child {
+            margin-right: 20px;
+          }
         }
       }
     }
@@ -302,7 +317,6 @@ export default {
           .product-active {
             color: #0284f2;
             border-bottom: 3px solid #0284f2 !important;
-            margin-right: 20px;
           }
           span {
             font-size: 20px;
@@ -327,7 +341,7 @@ export default {
           width: 350px;
           height: 110%;
           margin-right: 33px;
-
+          cursor: pointer;
           &:last-child {
             margin-right: 0;
           }
@@ -344,6 +358,7 @@ export default {
             text-align: left;
             color: #333333;
             margin-bottom: 23px;
+            transition:.2s;
           }
           .news-induce {
             width: 100%;
@@ -371,6 +386,8 @@ export default {
             padding-bottom: 20px;
             border-top: 2px solid #e8e8e8;
             position: relative;
+            transition:.2s;
+
             &::after {
               display: none;
               content: ">";
@@ -388,17 +405,6 @@ export default {
           }
         }
       }
-      .news-active {
-        .news-tit {
-          color: #0285f2 !important;
-        }
-        .new-time {
-          border-top: 2px solid #0285f2 !important;
-          &::after {
-            display: block !important;
-          }
-        }
-      }
     }
   }
 }
@@ -411,7 +417,6 @@ export default {
         .select-tit {
           .product-active {
             border-bottom: 3px solid #0284f2;
-            margin-right: 50px;
           }
           span {
             font-size: 24px;
@@ -419,6 +424,9 @@ export default {
             font-weight: 700;
             text-align: left;
             color: #222222;
+            &:first-child {
+              margin-right: 50px;
+            }
           }
         }
       }

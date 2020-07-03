@@ -45,8 +45,8 @@ export default {
 
   },
   destroyed(){
-    document.removeEventListener('touchstart')
-    document.removeEventListener('touchend')
+    document.removeEventListener('touchstart',function(){})
+    document.removeEventListener('touchend',function(){})
 
   },
   methods:{
@@ -67,12 +67,18 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.container{
+    transition:.2s;
+
+}
 //移动端样式
 @media screen and (max-width: 567px) {
   .pc-top-block {
     display: none;
   }
   .m-top-block {
+    transition:.2s;
+
     display: block;
     width: 100%;
     .block-tit {
@@ -87,6 +93,8 @@ export default {
       // background: url("../assets/thumb_title.png") no-repeat center center;
     }
     .thumb {
+    transition:.2s;
+
       height: 240px;
         min-width: 100%;
     }
@@ -145,8 +153,11 @@ export default {
   .container {
     text-align: center;
     overflow: hidden;
+
   }
   .pc-top-block {
+    transition:.2s;
+
     display: block;
     position: relative;
     height: 650px;
@@ -162,6 +173,8 @@ export default {
       z-index: 5;
     }
     .thumb {
+    transition:.2s;
+
       height: 650px;
       width: 1920px;
     }
@@ -172,11 +185,14 @@ export default {
 }
 @media screen and (min-width: 1400px) {
   .pc-top-block {
-    height: 900px;
+    height: 800px;
     position: relative;
+    .block-tit {
+      top: 190px !important;
+    }
     .thumb {
       width: 1920px;
-      height: 900px;
+      height: 800px;
     }
   }
 }
@@ -202,10 +218,16 @@ export default {
     height: 650px !important;
   }
   @media screen and (min-width: 1400px) {
-    height: 900px !important;
+    height: 800px !important;
   }
 }
 .pc-top-block {
+  .el-carousel__indicators {
+    bottom: 60px !important;
+    .el-carousel__indicator{
+      margin: 0 7px ;
+    }
+  }
   .el-carousel__button {
     height: 6px !important;
     width: 30px !important;

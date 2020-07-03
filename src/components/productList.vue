@@ -8,10 +8,10 @@
         </div>
         <div class="m-more">查看更多</div>
         <div class="select-tit">
-          <span class="product-active">电线电缆</span>
-          <span>智能数据传输电缆</span>
-          <span>电子电气产品</span>
-          <span>连接器</span>
+          <span :class="{'product-active':typeId == 1}" @click="typeId = 1">电线电缆</span>
+          <span :class="{'product-active':typeId == 2}" @click="typeId = 2">智能数据传输电缆</span>
+          <span :class="{'product-active':typeId == 3}" @click="typeId = 3">电子电气产品</span>
+          <span :class="{'product-active':typeId == 4}" @click="typeId = 4">连接器</span>
         </div>
       </div>
       <div class="c-main">
@@ -67,7 +67,7 @@
           <div class="induce">产品型号：QX-8952132</div>
         </div>
         <div class="pro-item">
-          <img src="../assets/product_list02.png" alt="" />
+          <img :src="srcsss" alt="" />
           <div class="pro-tit">航空航天电缆</div>
           <div class="add"></div>
           <div class="induce">产品型号：QX-8952132</div>
@@ -129,9 +129,18 @@ export default {
       proIndex: 0,
       maxSize: 6,
       screenWidth: 0,
+      typeId:1,
+      srcsss : ""
     };
   },
-  mounted() {},
+  watch:{
+    typeId:function(){
+      this.srcsss = require("../assets/product_list0"+this.typeId+".png")
+    }
+  },
+  mounted() {
+    this.srcsss = require("../assets/product_List01.png")
+  },
   /* eslint-enable */
   methods: {
     //res :-1是下一页
@@ -225,6 +234,7 @@ export default {
         color: transparent;
         -webkit-text-stroke: 1px #eaeaea;
         position: relative;
+        transition: .2s;
         &::after {
           position: absolute;
           content: "产品中心";
@@ -252,6 +262,7 @@ export default {
         text-align: right;
         color: #0284f2;
         line-height: 10px;
+        cursor: pointer;
       }
       .select-tit {
         display: none;
@@ -278,6 +289,7 @@ export default {
         text-align: left;
         color: #666666;
         letter-spacing: 1px;
+        transition: .2s;
       }
       .page-active {
         color: #0284f2;
@@ -345,6 +357,8 @@ export default {
           padding-top: 10px;
           border-radius: 10px;
           position: relative;
+        cursor: pointer;
+
           .add {
             position: absolute;
             left: 50%;
@@ -473,7 +487,7 @@ export default {
         padding-top: 51px;
         margin-bottom: 47px;
         width: 100%;
-
+        transition: .2s;
         //隐藏更多
         .m-more {
           display: none;
@@ -496,6 +510,11 @@ export default {
             text-align: center;
             color: #333333;
             padding: 8px 0;
+            cursor: pointer;
+            transition:.2s;
+            &:hover{
+              color: #0284f2;
+            }
           }
         }
       }
@@ -519,6 +538,7 @@ export default {
           padding: 0 20px;
           border-radius: 10px;
           margin-bottom: 35px;
+        cursor: pointer;
 
           position: relative;
           .add {
@@ -631,6 +651,11 @@ export default {
         margin-bottom: 42px;
         height: 210px;
         width: 100%;
+        .main-title{
+          &::after{
+            font-size: 36px;
+          }
+        }
         .m-more {
           display: none;
         }

@@ -15,16 +15,24 @@ const routes = [
     redirect:"/home"
   },
   {
-    path: "/about",
-    name: "About",
+    path: "/productCenter",
+    name: "ProductCenter",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "about" */ "../views/ProductCenter.vue")
+  },
+  {
+    path:"/about",
+    name:"About",
+    component: () => import("../views/About.vue")
   }
 ];
-
+const originalPush = VueRouter.prototype.push
+   VueRouter.prototype.push = function push(location) {
+   return originalPush.call(this, location).catch(err => err)
+}
 const router = new VueRouter({
   mode: "hash",
   routes

@@ -4,7 +4,8 @@
       <div class="tit">
         <div class="tit-left">SERVICE</div>
         <div class="tit-right">
-          <span class="serve-active">设计研发</span><span>查看更多</span>
+          <span class="serve-active">设计研发</span>
+          <span>查看更多</span>
         </div>
       </div>
       <div class="serve" ref="Mserve">
@@ -49,6 +50,7 @@
       <div
         :class="['serve-item', itemIndex == 1 ? 'serve-active' : '']"
         @click="changeActive(1)"
+                @mouseenter="changeActive(1)"
       >
         <div class="default-ind">
           <div class="default-tit">航空航天用电线电缆</div>
@@ -60,21 +62,23 @@
         <div class="active-ind">
           <div class="iconfont iconchuan"></div>
           <div class="active-tit">
-            舰船用线缆研发
+            航空航天用电线电缆
           </div>
           <div class="active-main">
-            适用于各种河海船舶及海上石油平台、钻井平台等水上建筑电气设备及仪表线路连接。
+                        适用于航空、航天及电子等军工领域的高温、低温、高腐蚀、高辐射等苛刻环境下的电气设备及仪表线路连接。
+
           </div>
         </div>
       </div>
       <div
         :class="['serve-item', itemIndex == 2 ? 'serve-active' : '']"
         @click="changeActive(2)"
+                @mouseenter="changeActive(2)"
       >
         <div class="default-ind">
-          <div class="default-tit">航空航天用电线电缆</div>
+          <div class="default-tit">舰船用线缆研发</div>
           <div class="default-body">
-            适用于航空、航天及电子等军工领域的高温、低温、高腐蚀、高辐射等苛刻环境下的电气设备及仪表线路连接。
+            适用于各种河海船舶及海上石油平台、钻井平台等水上建筑电气设备及仪表线路连接。
           </div>
           <div class="default-detail">了解详情</div>
         </div>
@@ -92,11 +96,12 @@
       <div
         :class="['serve-item', itemIndex == 3 ? 'serve-active' : '']"
         @click="changeActive(3)"
+                @mouseenter="changeActive(3)"
       >
         <div class="default-ind">
-          <div class="default-tit">航空航天用电线电缆</div>
+          <div class="default-tit">特种线缆研发</div>
           <div class="default-body">
-            适用于航空、航天及电子等军工领域的高温、低温、高腐蚀、高辐射等苛刻环境下的电气设备及仪表线路连接。
+            适用于各类武器装备电力连接用
           </div>
           <div class="default-detail">了解详情</div>
         </div>
@@ -104,21 +109,22 @@
           <div class="iconfont icontezhongyixueyujunshiyixueke"></div>
 
           <div class="active-tit">
-            舰船用线缆研发
+            特种线缆研发
           </div>
           <div class="active-main">
-            适用于各种河海船舶及海上石油平台、钻井平台等水上建筑电气设备及仪表线路连接。
+            适用于各类武器装备电力连接用
           </div>
         </div>
       </div>
       <div
         :class="['serve-item', itemIndex == 4 ? 'serve-active' : '']"
         @click="changeActive(4)"
+                @mouseenter="changeActive(4)"
       >
         <div class="default-ind">
-          <div class="default-tit">航空航天用电线电缆</div>
+          <div class="default-tit">套管设计</div>
           <div class="default-body">
-            适用于航空、航天及电子等军工领域的高温、低温、高腐蚀、高辐射等苛刻环境下的电气设备及仪表线路连接。
+            直升机及固定翼飞机电缆束成型，航空航天领域、电阻电容器、电子装置中电线和电缆束防干扰，汽车、音响视频线等线束的保护和美化
           </div>
           <div class="default-detail">了解详情</div>
         </div>
@@ -126,10 +132,10 @@
           <div class="iconfont iconguancai"></div>
 
           <div class="active-tit">
-            舰船用线缆研发
+            套管设计
           </div>
           <div class="active-main">
-            适用于各种河海船舶及海上石油平台、钻井平台等水上建筑电气设备及仪表线路连接。
+                        直升机及固定翼飞机电缆束成型，航空航天领域、电阻电容器、电子装置中电线和电缆束防干扰，汽车、音响视频线等线束的保护和美化
           </div>
         </div>
       </div>
@@ -152,8 +158,8 @@ export default {
     document.addEventListener("touchend", this.touch, false);
   },
   destroyed() {
-    document.removeEventListener("touchstart");
-    document.removeEventListener("touchend");
+    document.removeEventListener("touchstart",function(){});
+    document.removeEventListener("touchend",function(){});
   },
   methods: {
     touch(event) {
@@ -256,7 +262,9 @@ export default {
           span {
             width: 79px;
             height: 19px;
-
+            &:hover{
+              color:#0285f2;
+            }
             //
             padding-bottom: 5px;
             font-size: 14px;
@@ -269,6 +277,8 @@ export default {
             font-weight: 400;
             text-align: right;
             color: #191c26;
+            transition:.2s;
+            cursor: pointer;
           }
         }
       }
@@ -357,7 +367,6 @@ export default {
             text-align: left;
             color: #666666;
             padding-right: 10%;
-            overflow: hidden;
           }
         }
       }
@@ -389,6 +398,9 @@ export default {
             font-size: 20px;
             line-height: 54px;
             margin-left: 55px;
+            &:first-child{
+              margin-left: 0;
+            }
           }
         }
       }
@@ -428,7 +440,7 @@ export default {
     }
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 790px) {
   .container {
     text-align: center;
     height: auto;
@@ -497,7 +509,7 @@ export default {
         bottom: 0;
         left: 10%;
         width: 80%;
-        height: 30%;
+        height:40%;
         z-index: 5;
         .iconfont {
           width: 30px;
@@ -559,7 +571,7 @@ export default {
         transform: translateY(-50%);
         left: 0;
         width: 80%;
-        height: 40%;
+        height: 50%;
         background-color: white;
         padding-right: 20%;
         display: flex;
@@ -591,7 +603,7 @@ export default {
         }
         .default-body {
           width: 80%;
-          height: 54px;
+          height: 84px;
           font-size: 14px;
           font-family: Source Han Sans CN Light, Source Han Sans CN Light-Light;
           font-weight: 300;
@@ -625,6 +637,9 @@ export default {
 @media screen and (min-width: 992px) {
   .pc-serve {
     height: 650px;
+  }
+  .active-ind{
+    height: 35% !important;
   }
 }
 @media screen and (min-width: 1200px) {

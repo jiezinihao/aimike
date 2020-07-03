@@ -11,12 +11,24 @@
         <img class="top-icon" src="../assets/top_icon02.png" alt="" />
       </div>
       <div class="right">
-        <a href="" class="top-active">首页</a>
+        <a
+          :class="{ 'top-active': modelType == 1 }"
+          @click="goCom('Home')"
+          >首页</a
+        >
         <a href="">电缆联盟</a>
-        <a href="">产品中心</a>
+        <a
+          :class="{ 'top-active': modelType == 3 }"
+          @click="goCom('ProductCenter')"
+          >产品中心</a
+        >
         <a href="">服务支持</a>
         <a href="">新闻动态</a>
-        <a href="">关于我们</a>
+        <a
+          :class="{ 'top-active': modelType == 6 }"
+          @click="goCom('About')"
+          >关于我们</a
+        >
         <a href="">联系我们</a>
       </div>
     </div>
@@ -125,10 +137,43 @@ export default {
   data() {
     return {
       currenDetail: -1,
+      modelType: 1,
     };
   },
-  mounted() {},
+  watch: {},
+  mounted() {
+    
+  },
   methods: {
+    goCom(res) {
+      this.$router.push({ name: res });
+      switch (res) {
+        case "Home": {
+          this.modelType = 1;
+          break;
+        }
+        case "11141": {
+          this.modelType = 2;
+          break;
+        }
+        case "ProductCenter": {
+          this.modelType = 3;
+          break;
+        }
+        case "11211": {
+          this.modelType = 4;
+          break;
+        }
+        case "11131": {
+          this.modelType = 5;
+          break;
+        }
+        case "About": {
+          this.modelType = 6;
+          break;
+        }
+      }
+    },
     openDetail(res) {
       let deta = this.$refs.manuList.children[res].children[1].style.height;
       if (deta == 0 || deta == "0px") {
@@ -137,8 +182,8 @@ export default {
             this.currenDetail
           ].children[1].style.height = 0;
         }
-        if (document.body.clientWidth > 1200) {
-          this.$refs.manuList.children[res].children[1].style.height = "270px";
+        if (document.body.clientWidth > 566) {
+          this.$refs.manuList.children[res].children[1].style.height = "240px";
         } else {
           this.$refs.manuList.children[res].children[1].style.height = "135px";
         }
@@ -147,7 +192,6 @@ export default {
         this.$refs.manuList.children[res].children[1].style.height = 0;
         this.currenDetail = -1;
       }
-      console.log(this.currenDetail);
     },
     openManu(res) {
       if (res) {
@@ -187,7 +231,7 @@ export default {
     transition: 0.1s;
     background: #fff;
     overflow-y: scroll !important;
-    overflow-x:hidden !important ;
+    overflow-x: hidden !important ;
     z-index: 11;
     .manu-nav {
       width: 100%;
@@ -201,6 +245,8 @@ export default {
         height: 28px;
       }
       .iconcha {
+        cursor: pointer;
+
         margin-right: 30px;
         font-size: 20px;
         color: white;
@@ -221,14 +267,51 @@ export default {
         color: #cccccc;
         width: 228px;
         padding: 12px;
-        font-size: 12px;
-        font-family: Source Han Sans CN Light, Source Han Sans CN Light-Light;
-        font-weight: 300;
-        text-align: left;
-        color: #cccccc;
-        letter-spacing: 1px;
+
+        &::-webkit-input-placeholder {
+          /* Chrome/Opera/Safari */
+          color: #cccccc;
+          font-size: 12px;
+          font-family: Source Han Sans CN Light, Source Han Sans CN Light-Light;
+          font-weight: 300;
+          text-align: left;
+          color: #cccccc;
+          letter-spacing: 1px;
+        }
+        &::-moz-placeholder {
+          font-size: 12px;
+          font-family: Source Han Sans CN Light, Source Han Sans CN Light-Light;
+          font-weight: 300;
+          text-align: left;
+          color: #cccccc;
+          letter-spacing: 1px;
+          /* Firefox 19+ */
+          color: #ccc;
+        }
+        &:-ms-input-placeholder {
+          font-size: 12px;
+          font-family: Source Han Sans CN Light, Source Han Sans CN Light-Light;
+          font-weight: 300;
+          text-align: left;
+          color: #cccccc;
+          letter-spacing: 1px;
+          /* IE 10+ */
+          color: #ccc;
+        }
+        &:-moz-placeholder {
+          font-size: 12px;
+          font-family: Source Han Sans CN Light, Source Han Sans CN Light-Light;
+          font-weight: 300;
+          text-align: left;
+          color: #cccccc;
+          letter-spacing: 1px;
+          /* Firefox 18- */
+          color: #ccc;
+        }
       }
       .search-btn {
+        cursor: pointer;
+
         width: 60px;
         height: 35px;
         background-color: #0284f2;
@@ -243,6 +326,7 @@ export default {
       text-align: center;
       .list-item {
         width: 100%;
+        cursor: pointer;
         .tit-active {
           color: #0284f2;
         }
@@ -320,31 +404,51 @@ export default {
 @media screen and (min-width: 567px) {
   .open-manu {
     .manu-nav {
-      height: 100px;
+      height: 70px;
       padding: 0 10px;
       img {
-        height: 48px;
+        height: 38px;
       }
       .iconcha {
         cursor: pointer;
 
-        font-size: 34px;
+        font-size: 28px;
       }
     }
     .manu-search {
-      height: 160px;
+      height: 130px;
       input {
-        width: 480px;
-        height: 62px;
-        font-size: 24px;
-        padding: 24px;
+        width: 390px;
+        height: 52px;
+        padding: 20px;
+        font-size: 21px;
+        &::-webkit-input-placeholder {
+          color: #ccc;
+          font-size: 21px;
+          line-height: 21px;
+        }
+
+        &::-moz-placeholder {
+          color: #ccc;
+          font-size: 21px;
+          line-height: 21px;
+        }
+
+        &:-ms-input-placeholder {
+          color: #ccc;
+          font-size: 21px;
+        }
+
+        &:-moz-placeholder {
+          color: #ccc;
+          font-size: 21px;
+        }
       }
       .search-btn {
-        min-width: 130px;
-        cursor: pointer;
+        min-width: 90px;
 
-        height: 62px;
-        font-size: 36px;
+        height: 52px;
+        font-size: 19px;
         font-family: Source Han Sans CN Regular,
           Source Han Sans CN Regular-Regular;
         font-weight: 400;
@@ -358,13 +462,13 @@ export default {
 
       .list-item {
         .list-tit {
-          height: 104px;
-          font-size: 36px;
+          height: 84px;
+          font-size: 27px;
         }
         .list-body {
           .list-main {
-            height: 90px;
-            font-size: 28px;
+            height: 80px;
+            font-size: 24px;
           }
         }
       }
@@ -404,12 +508,14 @@ export default {
   }
 }
 @media screen and (min-width: 768px) {
-  .open-manu{
+  .open-manu {
     display: none;
-
   }
   .m-container {
     display: none;
+  }
+  .container {
+    height: 100px;
   }
   .pc-center {
     max-width: 1399px;
@@ -419,7 +525,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-      overflow: hidden;
+    overflow: hidden;
 
     .left {
       @media screen and (max-width: 1300px) {
@@ -438,21 +544,26 @@ export default {
       font-family: Source Han Sans CN Light;
       min-width: 800px;
       text-align: left;
+
       .top-active {
         color: #05acf7;
         position: relative;
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: -6px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 28px;
-          height: 2px;
-          background: #05acf7;
-        }
+        border-bottom: 3px solid #05acf7;
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   bottom: -6px;
+        //   left: 50%;
+        //   transform: translateX(-50%);
+        //   width: 28px;
+        //   height: 2px;
+        //   background: #05acf7;
+        // }
       }
       a {
+        transition: 0.2s;
+
+        cursor: pointer;
         line-height: 20px;
         height: 16px;
         text-decoration: none;
@@ -460,6 +571,10 @@ export default {
         font-size: 16px;
         height: 15px;
         margin-left: 30px;
+        padding: 5px 0;
+        &:hover {
+          color: #05acf7;
+        }
         &:nth-child(2) {
           margin-left: 58px;
         }

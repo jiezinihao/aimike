@@ -1,32 +1,33 @@
 
 @font-face{
     font-family: Source Han Sans CN Light ;
-    src: url("./siyuanheiti_ttrar/SourceHanSansLight.otf");
+    src: url("./sans/Light.otf");
 }
 @font-face{
     font-family: Source Han Sans CN Light Light;
-    src: url("./siyuanheiti_ttrar/SourceHanSans-ExtraLight.otf");
+    src: url("./sans/Extralight.ttf");
 }
 @font-face{
     font-family: Source Han Sans CN Heavy;
-    src: url("./siyuanheiti_ttrar/SourceHanSans-Heavy.otf");
+    src: url("./sans/heavy.ttf");
 }
 @font-face{
     font-family: Source Han Sans CN Bold-Bold;
-    src: url("./siyuanheiti_ttrar/SourceHanSans-Bold.otf");
+    src: url("./sans/bold.ttf");
 }
 @font-face{
     font-family: Source Han Sans CN Medium;
-    src: url("./siyuanheiti_ttrar/SourceHanSans-Medium.otf");
+    src: url("./sans/meidum.ttf");
 }
 @font-face{
     font-family: Source Han Sans CN;
-    src: url("./siyuanheiti_ttrar/SourceHanSans-Normal.otf");
+    src: url("./sans/Normal.TTF");
 }
 @font-face{
     font-family: Source Han Sans CN Regular;
-    src: url("./siyuanheiti_ttrar/SourceHanSans-Regular.otf");
+    src: url("./sans/regular.ttf");
 }
+
 
 
 body{
@@ -37,10 +38,6 @@ body{
     font-weight: 300;
     background-color: #fff;
     scrollbar-width: none;
-    　overflow-y: scroll;
-　　scrollbar-color: transparent transparent;
-　　scrollbar-track-color: transparent;
-　　-ms-scrollbar-track-color: transparent;
 }
 
 body::-webkit-scrollbar {
