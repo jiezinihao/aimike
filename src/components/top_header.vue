@@ -58,7 +58,7 @@
             产品中心
           </div>
           <div class="list-body">
-            <div class="list-main">电线电缆</div>
+            <div class="list-main" @click="goCom('ProductCenter')">电线电缆</div>
             <div class="list-main">智能数据传输电缆</div>
             <div class="list-main">电子电器产品</div>
           </div>
@@ -71,7 +71,7 @@
             电缆联盟
           </div>
           <div class="list-body">
-            <div class="list-main">电线电缆</div>
+            <div class="list-main" >电线电缆</div>
             <div class="list-main">智能数据传输电缆</div>
             <div class="list-main">电子电器产品</div>
           </div>
@@ -175,6 +175,7 @@ export default {
       }
     },
     openDetail(res) {
+
       let deta = this.$refs.manuList.children[res].children[1].style.height;
       if (deta == 0 || deta == "0px") {
         if (this.currenDetail != -1) {
@@ -182,6 +183,7 @@ export default {
             this.currenDetail
           ].children[1].style.height = 0;
         }
+        console.log(document.body.clientWidth)
         if (document.body.clientWidth > 566) {
           this.$refs.manuList.children[res].children[1].style.height = "240px";
         } else {
@@ -195,13 +197,13 @@ export default {
     },
     openManu(res) {
       if (res) {
-        document.body.style.position = "fixed";
+        // document.body.style.position = "fixed";
         document.body.style.overflowY = "hidden";
         this.$refs.manu.style.opacity = "1";
 
         this.$refs.manu.style.width = "100%";
       } else {
-        document.body.style.position = "relative";
+        // document.body.style.position = "relative";
         document.body.style.overflowY = "auto";
         this.$refs.manu.style.width = "0";
         this.$refs.manu.style.opacity = "0";
